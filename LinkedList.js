@@ -21,8 +21,5 @@ class LinkedList {
 const myList = new LinkedList(10)
 myList.append(16)
 myList.append(20)
-myList.append(30)
-myList.append(40)
-myList.append(50)
 console.log(myList);                               
-// console.log(myList.head.next.next.value);                               
+                              
