@@ -19,7 +19,7 @@ class LinkedList {
     }
 }
 const myList = new LinkedList(10)
-myList.append(20)
+myList.append(25)
 myList.append(30)
 console.log(myList);                               
                               
