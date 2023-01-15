@@ -43,9 +43,22 @@ function printMiddle() {
         console.log("middleElement is " + temp.data);
     }
 }
+// OR
+function  middle() {
+    let length = this.getLen();
+    let middleLength = length / 2;
+    let count = 0;
+    let current = this.head;
+    while (count < parseInt(middleLength)) {
+        current = current.next;
+        count++;
+    }
+    console.log("middle node", current);
+}
 
 for (let i = 5; i > 0; i--) {
     pushNode(i);
     printNode();
     printMiddle();
+    middle();
 }

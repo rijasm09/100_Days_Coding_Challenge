@@ -11,7 +11,7 @@ class LinkedList {
     print() {
         let current = this.head
         while (current) {
-            console.log(current.value);
+            console.log(current);
             current = current.next;
         }
     }
@@ -49,7 +49,7 @@ myList.append(20);
 myList.append(30);
 myList.append(40);
 myList.print()
-
+console.log("reverse linkedlist");
 myList.reverse();
 myList.print()
 
