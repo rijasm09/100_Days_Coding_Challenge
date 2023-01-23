@@ -64,17 +64,18 @@ class LinkedList {
         }
     }
     reverse() {
-        first = this.head;
-        second = first.next;
-        this.tail = this.head;
-        while (second) {
-            temp = second.next;
-            second.next = first;
-            first = second;
-            second = temp
-        }
-        this.head.next = null;
-        this.head = first
+    first = this.head
+    second = first.next
+    this.tail = this.head
+    while (second) {
+        let temp = second.next
+        second.next = first
+
+        first = second
+        second = temp
+    }
+    this.head.next = null
+    this.head = first
 
     }
     getLen() {
