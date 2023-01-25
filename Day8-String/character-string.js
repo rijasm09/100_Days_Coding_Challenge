@@ -1,12 +1,12 @@
-// To find a character in a string
+// To find the position of a character in a string
 
-// indexof()
+//using --------> indexof()
 let str = "Hello, world!";
 let char = "l";
 let index = str.indexOf(char);
 console.log(index); // 2
 
-// search()
+//using -------->  search()
 
 // Alternatively, you can use the search() method, 
 // which works in the same way as indexOf().
