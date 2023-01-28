@@ -1,0 +1,6 @@
+myList.delete(2)
+myList.getLen()
+myList.print()
+myList.insert(2,33)
+myList.getLen()
+myList.print()

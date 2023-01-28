@@ -9,41 +9,40 @@ class LinkedList {
     constructor() {
         this.head = null;
         this.tail = null;
+        this.length = 1;
     }
     append(data) {
-        const newNode = new Node(data);
+        const newNode = new Node(data)
         if (!this.head) {
             this.head = newNode;
-            this.tail = this.head;
+            this.tail = this.head
         } else {
             this.tail.next = newNode;
             this.tail = newNode;
         }
+        this.length++
     }
-    getLen() {
+    insertSecondLastPositon(data){
         let current = this.head;
-        let length = 1;
+        let count = 1
+        while (count < this.length-2) {
+            current = current.next;
+            count++
+        }
+        console.log("insdie",current);
+    }
+    print() {
+        let current = this.head;
         while (current) {
-            length++
+            console.log(current);
             current = current.next;
         }
-        return length;
-    }
-    printMiddle() {
-        let length = this.getLen();
-        let current = this.head;
-        let count = 1;
-        while (count < parseInt(length / 2)) {
-            current = current.next;
-            count++;
-        }
-        console.log("middle element is",current);
     }
 }
 
 const myList = new LinkedList;
 myList.append(1)
 myList.append(2)
-myList.append(3)
 myList.append(4)
-myList.printMiddle()
+myList.insertSecondLastPositon(3)
+myList.print()

@@ -18,7 +18,7 @@
 
 // USING --------- RECURSION  : 
 
-let fact = 1;
+// let fact = 1;
 
 const factorial = (n) => {
 

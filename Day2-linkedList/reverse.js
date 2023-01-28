@@ -30,7 +30,7 @@ class LinkedList {
     reverse() {
         let first = this.head
         let second = first.next
-        this.tail = this.head
+        this.tail = this.head  // tail value we store 
         // while is used to link 20 --> 10, so it start from 20 and continues till 40
         while (second) {
           
@@ -40,9 +40,8 @@ class LinkedList {
             first = second //first = 20
             second = temp //second = 30 so that in second iteration we consider 30 & 40 and fourth iteration 40 & null.
         }
-
         this.head.next = null //head was at 10 on reversing it should it should point to null
-        this.head = first  // now head = 40
+        this.head = first  // now new head = 40
     }
 
 
