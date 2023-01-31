@@ -1,6 +1,2 @@
-myList.delete(2)
-myList.getLen()
-myList.print()
-myList.insert(2,33)
-myList.getLen()
-myList.print()
+ 2, 3,7];
+let arr2 = [4, 5, 6,9,8,6];
