@@ -6,35 +6,33 @@
 // the class is created, passing the parameters provided in the object 
 // creation to the constructor.
 
-class stack {
+
+class Stack {
     constructor() {
         this.array = [];
     }
-    append(data){
-        this.array.push(data)
+    peek() {
+        console.log("peek : ",this.array[this.array.length - 1]);
     }
-    display(){
+    push(value) {
+        this.array.push(value);
+        return this; 
+    }
+    pop() {
+       this.array.pop();
+    }
+    display() {
         console.log(this.array);
-    }
-    peek(){
-        let top = this.array[this.array.length-1]
-        console.log(top);
-    }
-    remove(){
-        this.array.pop()
     }
 }
 
-const myStack = new stack();
-myStack.append(5);
-myStack.append(10);
-myStack.append(15);
-myStack.append(20);
-myStack.append(25);
-myStack.display();
-console.log("top");
-myStack.peek();
-console.log("new stack after pop from top");
-myStack.remove();
-myStack.display();
 
+const myStack = new Stack();
+myStack.push(10)
+myStack.push(20)
+myStack.push(30)
+myStack.display()
+myStack.peek()
+myStack.pop()
+console.log("after pop: ");
+myStack.display()

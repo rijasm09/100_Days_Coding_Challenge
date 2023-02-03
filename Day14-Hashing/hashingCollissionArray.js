@@ -63,14 +63,14 @@ class hashTable {
 }
 
 
-const hash = new hashTable(50)
-hash.set("name", "salman")
-hash.set("age", 21)
-hash.set("place", "mathilakam")
-// hash.remove("age")
-// hash.remove("name")
+const hash = new hashTable(50);
+hash.set("name", "rijas")
+hash.set("age", 29)
+hash.set("place", "cochin")
+hash.get("age")
 hash.display()
-console.log(hash.get("name"));
+hash.remove("age")
+hash.display()
 
 // The find method is a built-in JavaScript method that returns 
 // the value of the first element in an array that satisfies 
