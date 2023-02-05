@@ -1,6 +1,7 @@
 class hashTable {
     constructor(size) {
         this.table = new Array(size)
+        // this is another way to instantiate array in js
         this.size = size;
     }
     hash(key) {

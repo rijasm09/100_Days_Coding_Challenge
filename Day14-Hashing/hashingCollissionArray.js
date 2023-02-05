@@ -35,7 +35,7 @@ class hashTable {
         if (bucket) {
             let sameKey = bucket.find(item => item[0] === key)
             if (sameKey) {
-                return sameKey[1]
+                console.log(sameKey[1]);
             }
         }
         return undefined
@@ -72,20 +72,20 @@ hash.display()
 hash.remove("age")
 hash.display()
 
-// The find method is a built-in JavaScript method that returns 
-// the value of the first element in an array that satisfies 
+// The find method is a built-in JavaScript method that returns
+// the value of the first element in an array that satisfies
 // a provided testing function.
 
-// The find method takes a callback function as an argument. 
-// This callback function takes in an element of the array and 
-// returns a boolean value indicating whether the element satisfies 
-// a certain condition. The find method returns the first element 
+// The find method takes a callback function as an argument.
+// This callback function takes in an element of the array and
+// returns a boolean value indicating whether the element satisfies
+// a certain condition. The find method returns the first element
 // for which the callback function returns true.
 
-// In the code, the find method is used to search for an entry in 
-// the bucket with the same key as the given key. The callback 
+// In the code, the find method is used to search for an entry in
+// the bucket with the same key as the given key. The callback
 // function takes an entry, represented as an array of [key, value],
 //  and returns true if the key of the entry matches the given key, and false otherwise.
 
-// So, the find method returns the first entry in the bucket with 
+// So, the find method returns the first entry in the bucket with
 // the same key as the given key, or undefined if no such entry is found.
