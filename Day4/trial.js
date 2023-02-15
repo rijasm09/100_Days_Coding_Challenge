@@ -1,17 +1,58 @@
-const insertionSort = (arr) => {
-    for (let i = 1; i < arr.length; i++) {
-        let n = i;
-        for (let j = n - 1; j >= 0; j--,n--) {
-            if (arr[n] < arr[j]) {
-                let temp = arr[n]
-                arr[n] = arr[j]
-                arr[j] = temp
-            }
-        }
+class Node {
+    constructor(data) {
+        this.data = data;
+        this.next = null;
     }
 }
 
+class bubbleSort {
+    constructor() {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+    }
+    push(data) {
+        const newNode = new Node(data)
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = this.head;
+        } else{
+            this.tail.next = newNode;
+            this.tail = newNode;
+        }
+        this.length++;
+    }
+    sortNew(){
+        let current = this.head.data;
+        // console.log(current);
+        for (let i = current; i < this.length-1; ) {
 
-let arr = [2, 4, 1, 9, 3, 7, 2];
-insertionSort(arr);
-console.log(arr);
+             for (let j = current; j < this.length; ) {
+                  if (j > j.next.data) {
+                    let temp = j.next.data;
+                    j.next.data = j;
+                    j = temp;
+                  }  
+                  j = j.next.data;   
+             }      
+             i = i.next.data;      
+        }
+    }
+    display(){
+        let current = this.head;
+        while (current) {
+            console.log(current);
+            current = current.next
+        }
+    }
+
+}
+
+
+const sort = new bubbleSort();
+sort.push(4)
+sort.push(1)
+sort.push(6)
+sort.push(3)
+sort.sortNew()
+sort.display()

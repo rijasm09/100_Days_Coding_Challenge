@@ -12,7 +12,7 @@ function mergeSort(arr) {
   
   function merge(left, right) {
     let sortedpart = [];
-    while (left.length && right.length) {
+    while (left.length && right.length) { //if arrays are not empty
       if (left[0] <= right[0]) {
         sortedpart.push(left.shift());
       } else {

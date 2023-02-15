@@ -1,32 +1,29 @@
 class Stack {
-    constructor(s) {
-      this.sp = -1;
-      this.stack = [];
-      this.size = s;
-    }
-    push(value) {
-      if (this.sp > this.size - 1) {
-        console.log("stack out");
-      } else {
-        this.sp++;
-        this.stack.push(value);
-      }
-      console.log(this.stack);
-    }
-    pop() {
-      this.stack.pop();
-      this.length--;
+  constructor() {
+    this.array = [];
+  }
+  push(value) {
+    if (this.array.length < 5) {
+      this.array.push(value)
+      // console.log("array length", this.array.length);
+    } else {
+      console.log("stack overflow");
     }
   }
-  
-  let mystack = new Stack(5);
-  mystack.push(10);
-  mystack.push(70);
-  mystack.push(50);
-  mystack.push(40);
-  mystack.push(40);
-  mystack.push(40);
-  mystack.push(40);
-  mystack.push(40);
-  
-  // console.log();
+  pop() {
+    if (this.array.length) {
+      this.array.pop()
+      // console.log("array length", this.array.length);
+    } else {
+      console.log("stack underflow");
+    }
+  }
+
+
+}
+
+const myStack = new Stack();
+myStack.push(10);
+myStack.pop();
+myStack.pop();
+
