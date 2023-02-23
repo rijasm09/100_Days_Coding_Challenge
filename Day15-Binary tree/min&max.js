@@ -76,18 +76,34 @@ class binarySearchTree {
 
     // BFS
     levelOrder() {
-      const queue = []
-      queue.push(this.root)
-      while (queue.length) {
-        let curr = queue.shift()
-        console.log(curr.value);
-        if (curr.left) {
-            queue.push(curr.left)
+        const queue = []
+        queue.push(this.root)
+        while (queue.length) {
+            let curr = queue.shift()
+            console.log(curr.value);
+            if (curr.left) {
+                queue.push(curr.left)
+            }
+            if (curr.right) {
+                queue.push(curr.right)
+            }
         }
-        if (curr.right) {
-            queue.push(curr.right)
+    }
+
+    // min value in the tree
+    min(root) {
+        if (!root.left) {
+            console.log("least value :", root.value);
+        } else {
+            return this.min(root.left)
         }
-      }
+    }
+    max(root) {
+        if (!root.right) {
+            console.log("highest : ", root.value);
+        } else {
+            return this.max(root.right)
+        }
     }
 }
 
@@ -106,5 +122,7 @@ console.log(treeify.asTree(tree, true));
 // tree.inOrder(tree.root)
 // console.log("postOrder");
 // tree.postOrder(tree.root)
-console.log("breadth first search");
-tree.levelOrder()
+// console.log("breadth first search");
+// tree.levelOrder()
+tree.min(tree.root)
+tree.max(tree.root)

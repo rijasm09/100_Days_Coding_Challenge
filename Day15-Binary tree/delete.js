@@ -76,18 +76,61 @@ class binarySearchTree {
 
     // BFS
     levelOrder() {
-      const queue = []
-      queue.push(this.root)
-      while (queue.length) {
-        let curr = queue.shift()
-        console.log(curr.value);
-        if (curr.left) {
-            queue.push(curr.left)
+        const queue = []
+        queue.push(this.root)
+        while (queue.length) {
+            let curr = queue.shift()
+            console.log(curr.value);
+            if (curr.left) {
+                queue.push(curr.left)
+            }
+            if (curr.right) {
+                queue.push(curr.right)
+            }
         }
-        if (curr.right) {
-            queue.push(curr.right)
+    }
+
+    // min value in the tree
+    min(root) {
+        if (!root.left) {
+            return root.value
+        } else {
+            return this.min(root.left)
         }
-      }
+    }
+    max(root) {
+        if (!root.right) {
+            console.log("highest : ", root.value);
+        } else {
+            return this.max(root.right)
+        }
+    }
+
+    delete(value) {
+        this.root = this.deleteNode(this.root, value)
+    }
+
+    deleteNode(root, value) {
+        if (root === null) {
+            return root;
+        }
+        if (value < root.value) {
+            root.left = this.deleteNode(root.left, value)
+        } else if (value > root.value) {
+            root.right = this.deleteNode(root.right, value)
+        } else {
+             if (!root.right && !root.left) {
+                return null;
+             }
+             if (!root.left) {
+                return root.right
+             } else if (!root.right) {
+                return root.left
+             }
+             root.value = this.min(root.right)
+             root.right = this.deleteNode(root.right,root.value)
+        }
+        return root;
     }
 }
 
@@ -106,5 +149,7 @@ console.log(treeify.asTree(tree, true));
 // tree.inOrder(tree.root)
 // console.log("postOrder");
 // tree.postOrder(tree.root)
-console.log("breadth first search");
-tree.levelOrder()
+// console.log("breadth first search");
+// tree.levelOrder()
+// tree.min(tree.root)
+// tree.max(tree.root)

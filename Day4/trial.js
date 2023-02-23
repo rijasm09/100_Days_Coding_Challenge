@@ -38,28 +38,61 @@ class binarySearchTree {
             }
         }
     }
-    search(root, value) {
-        if (!root) {
-            return false;
+
+
+
+
+
+    // min value in the tree
+    min(root) {
+        if (!root.left) {
+            return root.value
         } else {
-            if (root.value === value) {
-                console.log("number exist : ", value);
-                return;
-            } else if (value < root.value) {
-                return this.search(root.left, value)
-            } else {
-                return this.search(root.right, value)
-            }
+            return this.min(root.left)
         }
+    }
+    max(root) {
+        if (!root.right) {
+            console.log("highest : ", root.value);
+        } else {
+            return this.max(root.right)
+        }
+    }
+
+    delete(value) {
+        this.root = this.deleteNode(this.root, value)
+    }
+
+    deleteNode(root, value) {
+        if (root === null) {
+            return root;
+        }
+        if (value < root.value) {
+            root.left = this.deleteNode(root.left, value)
+        } else if (value > root.value) {
+            root.right = this.deleteNode(root.right, value)
+        } else {
+          if (!root.left && !root.right) {
+            return null
+          }
+          if (!root.left) {
+            return root.right
+          } else if (!root.right) {
+            return root.left
+          }
+          root.value = this.min(root.right)
+          root.right = this.deleteNode(root.right,root.value)
+        }
+        return root;
     }
 }
 
 const tree = new binarySearchTree()
-// console.log("Tree is empty?", tree.isEmpty);
 tree.insert(10);
-tree.insert(20);
 tree.insert(5);
-tree.insert(35);
 tree.insert(3);
-tree.search(tree.root,3)
+tree.insert(7);
+tree.insert(15);
 console.log(treeify.asTree(tree, true));
+
+tree.delete(5)
