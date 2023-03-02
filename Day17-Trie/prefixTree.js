@@ -43,24 +43,59 @@ class Trie {
         return currentNode.isEnd;
     }
 
-    startsWith(prefix){
+    startsWith(prefix) {
         if (!prefix.length) return false;
         // starts with root node
         let currentNode = this.root;
         // for every character in the word
-        for(let letter of prefix) {
-            if(!currentNode.children.has(letter))
-            return false;
+        for (let letter of prefix) {
+            if (!currentNode.children.has(letter))
+                return false;
             // proceed to the next depth of the trie
             currentNode = currentNode.children.get(letter);
         }
         return true;
     }
+
+    suggest(prefix) {
+        let node = this.root
+        let curr = ""
+        for (const letter of prefix) {
+            if (!node.children.has(letter)) {
+                return []
+            }
+            node = node.children.get(letter)
+            curr += letter
+        }
+        let list = []
+        this.suggestHelper(node, list, curr)
+        return list
+    }
+
+    suggestHelper(node, list, curr) {
+        if (node.isEnd) {
+            list.push(curr)
+        }
+        if (!node.children.size) {
+            // console.log("gggggg");
+            return
+        }
+        for (const [char, child] of node.children) {
+
+            this.suggestHelper(child, list, curr + char)
+            // return list
+
+        }
+    }
+
 }
+
+
 
 const trie = new Trie();
 trie.insert("shibin")
 trie.insert("shinas")
 trie.insert("ramos")
+console.log(trie.suggest("shi"));
 console.log(trie.search("ram"));
 // console.log(trie.startsWith("shi"));
