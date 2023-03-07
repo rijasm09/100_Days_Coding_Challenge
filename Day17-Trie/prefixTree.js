@@ -58,33 +58,31 @@ class Trie {
     }
 
     suggest(prefix) {
-        let node = this.root
+        let currentNode = this.root
         let curr = ""
         for (const letter of prefix) {
-            if (!node.children.has(letter)) {
+            if (!currentNode.children.has(letter)) {
                 return []
             }
-            node = node.children.get(letter)
+            currentNode = currentNode.children.get(letter)
             curr += letter
         }
         let list = []
-        this.suggestHelper(node, list, curr)
-        return list
+        this.suggestHelper(currentNode, list, curr)
+        return list;
     }
 
-    suggestHelper(node, list, curr) {
-        if (node.isEnd) {
+    suggestHelper(currentNode, list, curr) {
+        if (currentNode.isEnd) {
             list.push(curr)
         }
-        if (!node.children.size) {
+        if (!currentNode.children.size) {
             // console.log("gggggg");
             return
         }
-        for (const [char, child] of node.children) {
-
+        for (const [char, child] of currentNode.children) {
             this.suggestHelper(child, list, curr + char)
             // return list
-
         }
     }
 

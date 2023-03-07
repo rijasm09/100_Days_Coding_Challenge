@@ -12,29 +12,34 @@ class maxHeap {
         if (this.heap.length > 2) {
             let idx = this.heap.length - 1
             while (this.heap[idx] > this.heap[Math.floor(idx / 2)]) {
-                if (idx >= 1) {
+                // if (idx >= 1) {
                     [this.heap[Math.floor(idx / 2)], this.heap[idx]] = [this.heap[idx], this.heap[Math.floor(idx / 2)]]
                     if (Math.floor(idx / 2) > 1) {
                         idx = Math.floor(idx / 2)
                     } else {
                         break
                     }
-                }
+                // }
             }
         }
     }
 
     remove() {
         let largest = this.heap[1];
+
         if (this.heap.length > 2) {
             this.heap[1] = this.heap[this.heap.length - 1]
             this.heap.splice(this.heap.length - 1)
+
+
             if (this.heap.length === 3) {
                 if (this.heap[1] < this.heap[2]) {
                     [this.heap[1], this.heap[2]] = [this.heap[2], this.heap[1]]
                 }
                 return largest;
             }
+
+            
             let i = 1;
             let left = 2 * i;
             let right = 2 * i + 1
@@ -52,6 +57,8 @@ class maxHeap {
                 if (this.heap[left] == undefined || this.heap[right] == undefined)
                     break
             }
+
+
         } else if (this.heap.length === 2) {
             this.heap.splice(1, 1)
         } else {

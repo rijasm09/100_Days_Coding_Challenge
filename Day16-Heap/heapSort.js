@@ -13,6 +13,8 @@ class HeapSort {
       }
 
       //SORTING
+    //   swap the last and first and reheapify and then i--
+    // it will go on sorting from the last
       for (let i = n - 1; i >= 0; i--) {
           let temp = this.array[0];
           this.array[0] = this.array[i];

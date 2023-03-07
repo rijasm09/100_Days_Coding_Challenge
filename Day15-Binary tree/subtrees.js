@@ -1,3 +1,6 @@
+// To find count of managers who has equal to or greater than 2 subordinates
+
+
 class TreeNode {
     constructor(value, children = []) {
         this.value = value;
@@ -5,24 +8,28 @@ class TreeNode {
     }
 }
 
-function countSubtrees(root) {
-    // If the root has no children, return 0.
-    if (root.children.length === 0) {
-        return 0;
-    }
+class countManagersGreaterThanOne {
+  constructor() {
+      this.root = null;
+      this.count = 0
+  }
 
-    let count = 1; // Start with 1 for the root.
+  countManager(root) {
+      if (!root) {
+          return ;
+      }
 
-    // Recursively count subtrees for each child.
-    //   if to find count greater than 2 children => start from i 
-    for (let i = 0; i < root.children.length; i++) {
-        if (root.children.length >= 2) {
-            count += countSubtrees(root.children[i]);
-        }
-    }
-
-    return count;
+      if (root.children.length >= 2) {
+          this.count++
+      }
+      for (let i = 0; i < root.children.length; i++) {
+          this.countManager(root.children[i])
+      }
+      return this.count;
+  }
 }
+
+  
 
 // Example usage:
 const tree = new TreeNode(1, [
@@ -39,4 +46,4 @@ const tree = new TreeNode(1, [
     ]),
 ]);
 
-console.log(countSubtrees(tree)); // Output: 7
+console.log(countManagers(tree)); // Output: 7
