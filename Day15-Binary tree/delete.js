@@ -106,11 +106,13 @@ class binarySearchTree {
         }
     }
 
+
     delete(value) {
         this.root = this.deleteNode(this.root, value)
     }
 
     deleteNode(root, value) {
+        // to check if the tree is empty
         if (root === null) {
             return root;
         }
@@ -119,17 +121,33 @@ class binarySearchTree {
         } else if (value > root.value) {
             root.right = this.deleteNode(root.right, value)
         } else {
+            // If the value to be deleted is equal to the root node value, 
+            // then there are three sub-cases:
+
+            // If the root node has no children, 
+            // then it is simply deleted by returning null.
              if (!root.right && !root.left) {
                 return null;
              }
+
+            //  If the root node has only one child, then that child 
+            //  takes the place of the deleted node by being returned.
              if (!root.left) {
                 return root.right
              } else if (!root.right) {
                 return root.left
              }
+
+            //  If the root node has two children, then the value of the 
+            //  node with the minimum value in the right subtree 
+            //  (found using the min function) is assigned to the root node,
+            //   and the deleteNode method is called recursively on the right 
+            //   subtree to delete the node with the minimum value. 
+            //   The updated right child of the current root is then returned.
              root.value = this.min(root.right)
              root.right = this.deleteNode(root.right,root.value)
         }
+        // to ensure changes in the root node are reflected 
         return root;
     }
 }
